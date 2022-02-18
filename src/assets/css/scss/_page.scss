@@ -1,0 +1,460 @@
+.top-area {
+    width: 100%;
+    min-height: 400px;
+    padding: 0 20px;
+    background: linear-gradient(145deg, #3770cc 20%, #ce91c9 84%);
+    
+    // TodoHeader
+    .header {
+        height: 60px;
+        position: relative;
+        vertical-align: middle;
+        .logo {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .date {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            font-size: 12px;
+            color: #fff;
+        }
+    }
+    
+    // TodoTitle
+    .title {
+        height: 200px;
+        &__message {
+            display: inline-block;
+            padding-top: 10px;
+            color: #fff;
+            font-size: 16px;
+        }
+        &__name {
+            display: inline-block;
+            padding-left: 6px;
+            font-size: 16px;
+            color: #fff;
+            font-weight: 900;
+            text-decoration: underline;
+        }
+        &__task {
+            line-height: 42px;
+            padding-top: 20px;
+            color: #fff;
+            font-size: 22px;
+            letter-spacing: 0.6px;
+            font-weight: 900;
+            &-top {
+                display: block;
+            }
+            &-count {
+                em {
+                    display: inline-block;
+                }
+                .title__task-left {
+                    font-size: 44px;
+                }
+            }
+            &-bottom {
+                display: block;
+                font-size: 42px;
+            }
+        }
+    }
+    
+    // TodoInput
+    .add { 
+        position: relative;
+        max-width: 720px;
+        margin: 0 auto;
+        padding-top: 30px;
+    
+        input {
+            display: block;
+            width: 100%;
+            font-size: 15px;
+            box-sizing: border-box;
+            padding: 0 42px 0 25px;
+            height: 52px;
+            border-radius: 30px;
+            background-color: rgba(255, 255, 255, 0.48);
+            box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.27);
+            border: 0;
+            outline: 0;
+            transition: background-color 0.3s;
+            cursor: text;
+    
+            &::placeholder {
+                font-size: 14px;
+                color: #fff;
+            }
+        }
+    
+        button {
+            position: absolute;
+            top: calc(50% + 15px);
+            right: 12px;
+            transform: translateY(-50%);
+            width: 33px;
+            height: 33px;
+            background-color: #fafafa;
+            border-radius: 50%;
+            background-size: 162px 162px;
+            border: 0;
+            outline: 0;
+            color: #666;
+            font-size: 12px;
+        }
+    }
+}
+.bottom-area {
+    padding: 30px 30px;
+    background-color: #efefef;
+
+    // TodoController
+    .controller {
+        max-width: 720px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        label {
+            display: none;
+        }
+
+        .clear { // button
+            letter-spacing: 0.14px;
+            font-size: 14px;
+            color: #ababab;
+            border: 0;
+            outline: 0;
+        }
+    }
+    .selectbox {
+        display: block;
+        width: 92px;
+        height: 30px;
+        padding: 5px 1px;
+        font-size: 14px;
+        color: #747474;
+        border: solid 1px #cbcbcb;
+        background-color: #fff;
+        border-radius: 0;
+        outline: 0;
+        background-position: right 8px top 55%;
+        background-size: 115px 115px;
+        cursor: pointer;
+    }
+
+    // TodoList
+    .list {
+        position: relative;
+        max-width: 720px;
+        margin: 21px auto 0;
+        &:after {
+            opacity: 0;
+            display: block;
+            text-align: center;
+            font-size: 22px;
+            color: #c4c4c4;
+            letter-spacing: 4px;
+            content: "ଘ(੭˘꒳˘)੭✧";
+        }
+
+        &__item {
+            position: relative;
+            width: 100%;
+            padding: 0 14px 0 45px;
+            background-color: #fff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            &:not(:first-child) {
+                margin-top: 12px;
+            }
+        }
+
+        input {
+            // 지유 추가
+            display: none;
+            .list__text {
+                color: #bababa;
+                text-decoration: line-through;
+            }
+            &:checked + label {
+                .icon-check:before {
+                    height: 0.74rem;
+                }
+                &:after {
+                    opacity: 1;
+                }
+                .list__text {
+                    color: #bababa;
+                    text-decoration: line-through;
+                    // &:before {
+                    //   width: 100%;
+                    //   transition: width 0.3s;
+                    // }
+                }
+            }
+        }
+
+        &__label {
+            padding: 16px 0;
+            font-size: 16.5px;
+            line-height: 1.24;
+            letter-spacing: 0.17px;
+            color: #141313;
+            min-width: 0;
+            flex-basis: 100%;
+            cursor: pointer;
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 14px;
+                display: inline-block;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                border: solid 1px #818181;
+                background-color: #fff;
+                cursor: pointer;
+            }
+            &::after {
+                content: "✔";
+                opacity: 0;
+                position: absolute;
+                display: block;
+                width: 20px;
+                height: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 18px;
+            }
+        }
+        
+        &__text {
+            position: relative;
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        &__right {
+            min-width: 50px;
+            margin-left: 13px;
+            text-align: right;
+        }
+        
+        &__delete {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            padding: 4px;
+            padding-right: 0;
+            box-sizing: content-box;
+            margin-left: auto;
+            margin-bottom: 3px;
+            &:before,
+            &:after {
+              top: 2px;
+              right: 4px;
+              position: absolute;
+              display: block;
+              content: "";
+              //x모양
+              width: 1px;
+              height: 12px;
+              background-color: rgb(184, 184, 184);
+              transition: background-color 0.15s;
+            }
+            &:before { //x모양
+              transform: rotate(-40deg);
+            }
+            &:after { //x모양
+              transform: rotate(40deg);
+            }
+        }
+
+        .blind {
+            overflow: hidden;
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+        }
+
+        &__date {
+            font-size: 11px;
+            color: #939393;
+            letter-spacing: 0.2px;
+        }
+
+        // list 가 비어있을때
+        &.list--empty {
+            &:after {
+                opacity: 1;
+                margin: 110px 0 120px;
+                animation: emptyAnimation 1s 1s;
+                transition: opacity 1s 0.3s;
+            }
+        }
+    }
+
+    // TodoFooter
+    .footer {
+        display: flex;
+        justify-content: center;
+        margin-top: 80px;
+        margin-bottom: 3px;
+        font-size: 12px;
+        color: #bdbdbd;
+
+        &__link {
+            margin-left: 42px;
+            &:hover {
+                color: #a7a7a7;
+                text-decoration: underline;
+            }
+        }
+    }
+}
+// TodoHello
+.hello {
+    display: flex;
+    flex-direction: column;
+    &__title {
+        padding-top: 20%;
+        font-size: 44px;
+        font-weight: 900;
+        color: #fff;
+        line-height: 50px;
+    }
+    &__user-name {
+        padding-top: 30px;
+        font-size: 20px;
+        font-weight: 900;
+        color: #fff;
+    }
+    input {
+        border-radius: 10px 10px;
+        border: none;
+        height: 36px;
+        width: 100%;
+        padding-left: 16px;
+        font-size: 18px;
+    }
+}
+// Modal
+.modal {
+    &__dim {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    &__content {
+        min-width: 3.4px;
+        margin: 0 auto;
+        padding: 3rem;
+        background-color: #fff;
+        box-shadow: 0 10px 30px -4px rgba(10, 10, 10, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    &__text {
+        text-align: center;
+        font-size: 14px;
+        color: #4a4a4a;
+        &::before {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 50px;
+            font-size: 22px;
+            font-weight: bold;
+            content: "Σ(゜ロ゜;) Oops !";
+        }
+    }
+
+    &__close {
+        text-align: center;
+        margin: 25px auto 0;
+        padding: 4px 12px;
+        border: 1px solid #b1b1b1;
+        border-radius: 2px;
+        font-size: 12px;
+        color: #555555;
+        &:hover {
+            color: #323232;
+            border-color: #4a4a4a;
+        }
+    }
+
+    // 트랜지션 기능 추가: v-enter나 v-leave
+    &-enter {
+        opacity: 0;
+        .modal__content {
+            transform: translateY(30px);
+            transition: transform 0.6s;
+        }
+    }
+
+    &-enter-active {
+        transition: opacity 0.3s;
+    }
+    &-leave-active {
+        transition: opacity 0.3s 0.05s;
+    }
+    &-leave-to {
+        opacity: 0;
+        .modal__content {
+            transform: translate(30px);
+            transition: transform 0.6s;
+        }
+    }
+}
+// TodoHello
+.hello {
+    display: flex;
+    flex-direction: column;
+    &__title {
+        padding-top: 20%;
+        font-size: 44px;
+        font-weight: 900;
+        color: #fff;
+        line-height: 50px;
+    }
+    &__user-name {
+        padding-top: 30px;
+        font-size: 20px;
+        font-weight: 900;
+        color: #fff;
+    }
+    input {
+        border-radius: 10px 10px;
+        border: none;
+        height: 36px;
+        width: 100%;
+        padding-left: 16px;
+        font-size: 18px;
+    }
+}
